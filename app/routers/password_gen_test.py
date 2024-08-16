@@ -13,7 +13,7 @@ class PasswordTestRequest(BaseModel):
     password: str
 
 
-@router.post("/generate_password")
+@router.post("/pass/generate_password")
 async def generate_password(request: Request) -> dict:
     body = await request.json()
     if "length" not in body:
@@ -33,7 +33,7 @@ async def generate_password(request: Request) -> dict:
     return response
 
 
-@router.post("/test_password")
+@router.post("/pass/test_password")
 async def test_password(request: Request) -> dict:
     body = await request.json()
     if "password" not in body:

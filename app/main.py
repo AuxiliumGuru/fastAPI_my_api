@@ -1,15 +1,14 @@
-from fastapi import FastAPI, HTTPException, Request
-from pydantic import BaseModel
-from app.utility.pass_gen_and_test import PasswordGenerator, PasswordTest
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import password_gen_test
+from app.routers import password_gen_test, todos, facts
 
 app = FastAPI()
 
 # Include routers
 
 app.include_router(password_gen_test.router)
-
+app.include_router(todos.router)
+app.include_router(facts.router)
 # allow origins for CORS
 
 app.add_middleware(
@@ -20,6 +19,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get('/')
 def root():
-    return {"Hello": "World"}
+    return {
+        "Hello": "World",
+        "About": {
+            "description": "This is a FastAPI project for my hobby projects",
+            "author": "Allan Mesa",
+            "email": "khestermesa@gmail.com"
+        }
+    }

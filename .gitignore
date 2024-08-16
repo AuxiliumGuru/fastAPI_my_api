@@ -60,4 +60,4 @@ dmypy.json
 .env
 
 # py try files
-requests_.py
+request_try/requests_.py
