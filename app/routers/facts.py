@@ -6,19 +6,12 @@ router = APIRouter()
 
 fact = random_fact.Fact()
 
+
 @router.get("/facts/random")
 def get_random_fact() -> dict:
-    return {"result":
-        {
-            "fact": fact.get_random_fact()
-        }
-    }
+    return {"fact": fact.get_random_fact()}
 
 
 @router.get("/facts/today")
 def get_today_random_fact() -> dict:
-    return {"result":
-        {
-            "fact": fact.get_today_random_fact()
-        }
-    }
+    return {"fact": fact.get_today_random_fact()}
